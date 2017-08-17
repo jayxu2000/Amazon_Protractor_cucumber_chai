@@ -20,7 +20,7 @@ var BasePage = (function () {
          * @requires a page to include `pageLoaded` method
          */
         this.at = function () {
-            return protractor_1.browser.wait(_this.pageLoaded(), timeout.xl);
+            return protractor_1.browser.wait(_this.pageLoaded(), _this.timeout.xl);
         };
         /**
          * navigate to a page via it's `url` var
@@ -29,7 +29,7 @@ var BasePage = (function () {
          * @requires page have both `url` and `pageLoaded` properties
          */
         this.to = function () {
-            protractor_1.browser.get(url, _this.timeout.xl);
+            protractor_1.browser.get(_this.url, _this.timeout.xl);
             return _this.at();
         };
         /**

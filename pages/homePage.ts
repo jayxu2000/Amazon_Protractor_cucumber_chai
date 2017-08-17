@@ -1,5 +1,4 @@
-const basePage = require('./basePage.js');
-import {BasePage} from './basePage.js';
+import {BasePage} from './basePage';
 let waitHelper = require('../helpers/wait_helper');
 let q = require('q');
 

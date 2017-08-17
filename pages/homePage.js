@@ -1,5 +1,4 @@
 "use strict";
-var basePage = require('./basePage.js');
 var waitHelper = require('../helpers/wait_helper');
 var q = require('q');
 var HomePage = (function () {

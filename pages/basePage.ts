@@ -20,7 +20,7 @@ class BasePage {
      * @requires a page to include `pageLoaded` method
      */
     at = ()=> {
-        return browser.wait(this.pageLoaded(), timeout.xl);
+        return browser.wait(this.pageLoaded(), this.timeout.xl);
     };
 
     /**
@@ -30,7 +30,7 @@ class BasePage {
      * @requires page have both `url` and `pageLoaded` properties
      */
     to = () =>{
-        browser.get(url, this.timeout.xl);
+        browser.get(this.url, this.timeout.xl);
         return this.at();
     };
 
@@ -77,8 +77,6 @@ class BasePage {
         }, this.timeout.xl);
     };
 
-
-
     doubleClick = function (element) {
         browser.actions().doubleClick(element).perform();
     }
@@ -91,8 +89,6 @@ class BasePage {
         });
         return present;
     };
-
-
 }
 
 export = BasePage;
