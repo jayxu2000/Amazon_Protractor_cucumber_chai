@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
 var BasePage = (function () {
     function BasePage() {
@@ -20,7 +21,7 @@ var BasePage = (function () {
          * @requires a page to include `pageLoaded` method
          */
         this.at = function () {
-            return protractor_1.browser.wait(_this.pageLoaded(), _this.timeout.xl);
+            return protractor_1.browser.wait(_this.pageLoaded, _this.timeout.xl);
         };
         /**
          * navigate to a page via it's `url` var
@@ -63,7 +64,7 @@ var BasePage = (function () {
         this.waitForJs = function () {
             return protractor_1.browser.wait(function () {
                 return protractor_1.browser.executeScript('return document.readyState==="complete"');
-            }, this.timeout.xl);
+            }, _this.timeout.xl);
         };
         this.doubleClick = function (element) {
             protractor_1.browser.actions().doubleClick(element).perform();
@@ -79,4 +80,4 @@ var BasePage = (function () {
     }
     return BasePage;
 }());
-module.exports = BasePage;
+exports.BasePage = BasePage;

@@ -1,7 +1,10 @@
 import {browser, ExpectedConditions as EC} from "protractor";
+import {promise} from "selenium-webdriver";
 
-class BasePage {
+export abstract class BasePage {
 
+    abstract url: string;
+    abstract pageLoaded: any;
     /**
      * wrap this.timeout. (ms) in t-shirt sizes
      */
@@ -19,8 +22,9 @@ class BasePage {
      * @returns {promise}
      * @requires a page to include `pageLoaded` method
      */
-    at = ()=> {
-        return browser.wait(this.pageLoaded(), this.timeout.xl);
+
+    at = () => {
+        return browser.wait(this.pageLoaded, this.timeout.xl);
     };
 
     /**
@@ -38,57 +42,55 @@ class BasePage {
      * Wrappers for expected conditions
      */
 
-    isVisible = function (locator) {
+    isVisible = locator => {
         return EC.visibilityOf(locator);
     };
 
-    isNotVisible = function (locator) {
+    isNotVisible = locator => {
         return EC.invisibilityOf(locator);
     };
 
-    inDom = function (locator) {
+    inDom = locator => {
         console.log("loaded " + EC.presenceOf(locator))
         return EC.presenceOf(locator);
     };
 
-    notInDom = function (locator) {
+    notInDom = locator => {
         return EC.stalenessOf(locator);
     };
 
-    isClickable = function (locator) {
+    isClickable = locator => {
         return EC.elementToBeClickable(locator);
     };
 
-    hasText = function (locator, text) {
+    hasText = (locator, text) => {
         return EC.textToBePresentInElement(locator, text);
     };
 
-    and = function (arrayOfFunctions) {
+    and = arrayOfFunctions => {
         return EC.and(arrayOfFunctions);
     };
 
-    titleIs = function (title) {
+    titleIs = title => {
         return EC.titleIs(title);
     };
 
-    waitForJs = function () {
+    waitForJs = ()=> {
         return browser.wait(function () {
             return browser.executeScript('return document.readyState==="complete"');
         }, this.timeout.xl);
     };
 
-    doubleClick = function (element) {
+    doubleClick = element => {
         browser.actions().doubleClick(element).perform();
-    }
+    };
 
-    isElementPresent = function (element) {
-        let present = browser.wait(EC.visibilityOf(element), 5 * 1000, 'Element is not present').then(function () {
+    isElementPresent = element => {
+        let present = browser.wait(EC.visibilityOf(element), 5 * 1000, 'Element is not present').then(() => {
             return true;
-        }).catch(function (err) {
+        }).catch( err => {
             return false;
         });
         return present;
     };
 }
-
-export = BasePage;
