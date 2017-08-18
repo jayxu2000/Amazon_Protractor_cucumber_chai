@@ -29,7 +29,7 @@ exports.config = {
     specs: ["features/*/01_Amazon_Offer_Add_to_Cart.feature"],
     // specs: ["features/*/*.feature"],
     exclude: [""],
-    noGlobals: true,
+    // noGlobals: true,
     cucumberOpts: {
         strict: true,
         format: ["pretty"],

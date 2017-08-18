@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var basePage_1 = require("./basePage");
 var protractor_1 = require("protractor");
-var HomePage = (function (_super) {
+var HomePage = /** @class */ (function (_super) {
     __extends(HomePage, _super);
     function HomePage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -36,4 +36,3 @@ var HomePage = (function (_super) {
     return HomePage;
 }(basePage_1.BasePage));
 exports.HomePage = HomePage;
-// module.exports = new HomePage(); 

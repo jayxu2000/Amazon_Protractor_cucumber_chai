@@ -1,18 +1,17 @@
 import {browser} from 'protractor';
 import {HomePage} from '../pages/homePage';
-// const homePage = require('../pages/homePage');
 import {defineSupportCode} from 'cucumber';
 // const {defineSupportCode} = require("cucumber");
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
-defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
+defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
     let homePage: HomePage = new HomePage();
 
     setDefaultTimeout(60 * 1000);
 
-    Given(/^I open home page$/, function () {
+    Given(/^I open home page$/, () => {
         return homePage.to();
     });
 
@@ -20,14 +19,18 @@ defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
 
     });
 
-    Given(/^The shopping cart has the count number "(.*?)"$/, function (count) {
+    Given(/^The shopping cart has the count number "(.*?)"$/, (count) => {
         expect(homePage.getCartCountText()).to.eventually.equal(count);
     });
 
-    When(/^I search for a product "(.*?)"$/, function (searchCriteria) {
+    When(/^I search for a product "(.*?)"$/, (searchCriteria:string) => {
         homePage.inputSearch(searchCriteria);
         /*    	Mpage.chooseOfferItem();
          DSpage.inputSearch(searchCriteria);*/
+    });
+
+    When(/^I select the first item in list$/, () => {
+        homePage
     });
 
 

@@ -24,5 +24,3 @@ export class HomePage extends BasePage{
 
 
 }
-
-// module.exports = new HomePage();

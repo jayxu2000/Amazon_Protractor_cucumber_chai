@@ -1,7 +1,9 @@
-const searchPage = require('../pages/searchPage');
-const {defineSupportCode} = require("cucumber");
+import {SearchResultPage} from '../pages/searchResultPage';
+import {defineSupportCode} from 'cucumber';
 
 defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
+
+    let searchResultPage: SearchResultPage = new SearchResultPage();
 
     setDefaultTimeout(60 * 1000);
 
@@ -10,11 +12,11 @@ defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
     });
 
     When(/^I select the first item in list$/, function () {
-        searchPage.click1stResult();
+        searchResultPage.click1stResult();
     });
 
     When(/^I add selected item$/, function () {
-        Ppage.clickAddToCartButton();
+        // Ppage.clickAddToCartButton();
         /*    	expectedOfferTitle = Opage.getOfferTitle();
          Opage.clickButItNowButton();*/
     });
