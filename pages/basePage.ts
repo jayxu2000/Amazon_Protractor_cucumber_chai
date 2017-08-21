@@ -51,7 +51,7 @@ export abstract class BasePage {
     };
 
     inDom = locator => {
-        console.log("loaded " + EC.presenceOf(locator))
+        console.log(`loaded ${EC.presenceOf(locator)}`)
         return EC.presenceOf(locator);
     };
 

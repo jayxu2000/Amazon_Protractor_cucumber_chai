@@ -20,6 +20,7 @@ defineSupportCode(function ({After, registerListener, Before}) {
     });
 
     Before(function () {
+        browser.ignoreSynchronization = true;
         this.cleanup = [];
     });
 

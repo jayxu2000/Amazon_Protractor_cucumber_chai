@@ -1,9 +1,6 @@
 import {browser} from 'protractor';
 import {HomePage} from '../pages/homePage';
 import {defineSupportCode} from 'cucumber';
-// const {defineSupportCode} = require("cucumber");
-let chai = require('chai').use(require('chai-as-promised'));
-let expect = chai.expect;
 
 defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
@@ -11,13 +8,13 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
     setDefaultTimeout(60 * 1000);
 
-    Given(/^I open home page$/, () => {
-        return homePage.to();
-    });
+    // Given(/^I open home page$/, () => {
+    //     return homePage.to();
+    // });
 
-    When(/^$/, function () {
-
-    });
+    // When(/^$/, function () {
+    //
+    // });
 
     Given(/^The shopping cart has the count number "(.*?)"$/, (count) => {
         expect(homePage.getCartCountText()).to.eventually.equal(count);
@@ -29,9 +26,6 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
          DSpage.inputSearch(searchCriteria);*/
     });
 
-    When(/^I select the first item in list$/, () => {
-        homePage
-    });
 
 
     /*    Scenario 2

@@ -19,6 +19,9 @@ export class HomePage extends BasePage{
     };
 
     getCartCountText = () => {
+        this.labelCartCount.getText().then(value=>{
+            console.log(`cart number is ${value}`)
+        });
         return this.labelCartCount.getText();
     }
 
