@@ -1,10 +1,11 @@
 import {BasePage} from "./basePage";
 import {$} from "protractor";
+import { config } from '../protractor.cucumber.conf';
 import * as waitHelper from "../helpers/wait_helper";
 import * as Q from 'q';
 
 export class HomePage extends BasePage{
-    url = '';
+    url = config.baseUrl;
     pageLoaded = this.inDom($('#seat_map_label'));
     labelCartCount = $("#nav-cart-count");
     menuSignInAccount = $("#nav-link-yourAccount");

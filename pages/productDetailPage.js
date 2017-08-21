@@ -1,25 +1,13 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var basePage_1 = require("./basePage");
-var protractor_1 = require("protractor");
-var ProductDetailPage = /** @class */ (function (_super) {
-    __extends(ProductDetailPage, _super);
-    function ProductDetailPage() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.url = '';
-        _this.pageLoaded = _this.inDom(protractor_1.$(''));
-        return _this;
+const basePage_1 = require("./basePage");
+const protractor_1 = require("protractor");
+class ProductDetailPage extends basePage_1.BasePage {
+    constructor() {
+        super(...arguments);
+        this.url = '';
+        this.pageLoaded = this.inDom(protractor_1.$(''));
     }
-    return ProductDetailPage;
-}(basePage_1.BasePage));
+}
 exports.ProductDetailPage = ProductDetailPage;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvZHVjdERldGFpbFBhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJwcm9kdWN0RGV0YWlsUGFnZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLHlDQUFvQztBQUNwQywyQ0FBNkI7QUFJN0IsdUJBQStCLFNBQVEsbUJBQVE7SUFBL0M7O1FBQ0ksUUFBRyxHQUFHLEVBQUUsQ0FBQztRQUNULGVBQVUsR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDLGNBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxDQUFDO0lBRW5DLENBQUM7Q0FBQTtBQUpELDhDQUlDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtCYXNlUGFnZX0gZnJvbSBcIi4vYmFzZVBhZ2VcIjtcbmltcG9ydCB7JH0gZnJvbSBcInByb3RyYWN0b3JcIjtcbmltcG9ydCAqIGFzIHdhaXRIZWxwZXIgZnJvbSBcIi4uL2hlbHBlcnMvd2FpdF9oZWxwZXJcIjtcbmltcG9ydCAqIGFzIFEgZnJvbSAncSc7XG5cbmV4cG9ydCBjbGFzcyBQcm9kdWN0RGV0YWlsUGFnZSBleHRlbmRzIEJhc2VQYWdle1xuICAgIHVybCA9ICcnO1xuICAgIHBhZ2VMb2FkZWQgPSB0aGlzLmluRG9tKCQoJycpKTtcblxufSJdfQ==
