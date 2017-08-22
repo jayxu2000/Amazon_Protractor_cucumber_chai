@@ -5,9 +5,10 @@ import * as Q from 'q';
 
 export class SearchResultPage extends BasePage{
     url = '';
-    pageLoaded = this.inDom($(''));
+    pageLoaded = this.inDom($('s-result-info-bar'));
+    firstSearchResult =  $('#result_1>div>div>div>div');
 
-    click1stResult = ()=>{
-
+    click1stResult = async()=>{
+        await this.firstSearchResult.click();
     };
 }

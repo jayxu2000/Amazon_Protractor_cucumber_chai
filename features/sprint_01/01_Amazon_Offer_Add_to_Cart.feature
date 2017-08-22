@@ -5,9 +5,9 @@ Feature: Demo Test Cases For Amazon
     Given I open homepage
     Given The shopping cart has the count number "0"
     When I search for a product "Cleaner"
-#    And I select the first item in list
-#And I add selected item
-#Then The shopping cart has the count number "1"
+    And I select the first item in list
+And I add selected item
+Then The shopping cart has the count number "1"
 #
 #@Regression
 #Scenario Outline: Category Filter

@@ -1,5 +1,7 @@
 import {SearchResultPage} from '../pages/searchResultPage';
 import {defineSupportCode} from 'cucumber';
+import {browser} from "protractor";
+
 
 defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
 
@@ -7,18 +9,8 @@ defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
 
     setDefaultTimeout(60 * 1000);
 
-    When(/^$/, function () {
-
-    });
-
-    When(/^I select the first item in list$/, function () {
-        searchResultPage.click1stResult();
-    });
-
-    When(/^I add selected item$/, function () {
-        // Ppage.clickAddToCartButton();
-        /*    	expectedOfferTitle = Opage.getOfferTitle();
-         Opage.clickButItNowButton();*/
+    When(/^I select the first item in list$/, async () => {
+        await searchResultPage.click1stResult();
     });
 
     When(/^$/, function () {
