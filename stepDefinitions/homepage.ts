@@ -1,8 +1,6 @@
 import {HomePage} from '../pages/homePage';
 import {defineSupportCode} from 'cucumber';
 import {expect} from "../protractor.cucumber.conf";
-// let chai = require('chai').use(require('chai-as-promised'));
-// let expect = chai.expect;
 
 defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
@@ -10,8 +8,8 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
     setDefaultTimeout(60 * 1000);
 
-    Given(/^I open homepage$/, () => {
-        return homePage.to();
+    Given(/^I open homepage$/, async() => {
+        await homePage.to();
     });
 
     //set "target": "ES2016" in tsconfig.json
