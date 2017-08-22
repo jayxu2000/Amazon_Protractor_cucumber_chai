@@ -35,7 +35,7 @@ export abstract class BasePage {
      */
     to = () =>{
         browser.get(this.url, this.timeout.xl);
-        return this.at();
+        // return this.at();
     };
 
     /**
@@ -50,9 +50,8 @@ export abstract class BasePage {
         return EC.invisibilityOf(locator);
     };
 
-    inDom = locator => {
-        console.log(`loaded ${EC.presenceOf(locator)}`)
-        return EC.presenceOf(locator);
+    inDom = async (locator) => {
+        return await EC.presenceOf(locator);
     };
 
     notInDom = locator => {

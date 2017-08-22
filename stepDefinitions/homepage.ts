@@ -1,6 +1,9 @@
 import {HomePage} from '../pages/homePage';
-import {defineSupportCode} from 'cucumber';
-import {expect} from "../protractor.cucumber.conf";
+import {defineSupportCode} from 'cucumber';//ES6 syntax which will use commonJS
+import * as chai from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
+chai.use(chaiAsPromised);
+let expect = chai.expect;
 
 defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
@@ -12,9 +15,9 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
         await homePage.to();
     });
 
-    //set "target": "ES2016" in tsconfig.json
-    Given(/^The shopping cart has the count number "(.*?)"$/, (count) => {
-        expect(homePage.getCartCountText()).to.eventually.equal(count);
+    //set "target": "ES2016" in tsconfig.json so that we can use async/await
+    Given(/^The shopping cart has the count number "(.*?)"$/, async (count) => {
+        await expect(homePage.getCartCountText()).to.eventually.equal(count);
     });
 
     When(/^I search for a product "(.*?)"$/, async (searchCriteria:string) => {

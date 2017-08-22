@@ -2,10 +2,6 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 import {browser, Config} from "protractor";
 
-let chai = require("chai");
-let chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
-declare let expect: any = chai.expect;
 let _ = require('lodash');
 
 let capabilities = {
@@ -38,6 +34,7 @@ export let config: Config = {
         require: ["stepDefinitions/*.js",
             'support/hooks.js']
     },
+
     getMultiCapabilities: ()=> {
         let browsers_param = capabilities.chrome.browserName;
         let browsers = browsers_param.split(',');
