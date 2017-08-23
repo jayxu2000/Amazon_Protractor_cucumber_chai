@@ -3,7 +3,7 @@ import {defineSupportCode} from 'cucumber';
 import {browser} from "protractor";
 
 
-defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
+defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
 
     let searchResultPage: SearchResultPage = new SearchResultPage();
 
@@ -13,7 +13,4 @@ defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
         await searchResultPage.click1stResult();
     });
 
-    When(/^$/, function () {
-
-    });
 });

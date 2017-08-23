@@ -2,11 +2,10 @@ import {HomePage} from '../pages/homePage';
 import {defineSupportCode} from 'cucumber';//ES6 syntax which will use commonJS
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
-import {async} from "q";
 chai.use(chaiAsPromised);
 let expect = chai.expect;
 
-defineSupportCode(({When, Then, Given, setDefaultTimeout, Before}) => {
+defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
 
     let homePage: HomePage = new HomePage();
 
@@ -23,27 +22,27 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, Before}) => {
 
     When(/^I search for a product "(.*?)"$/, async (searchCriteria:string) => {
         await homePage.inputSearch(searchCriteria);
-        /*    	Mpage.chooseOfferItem();
-         DSpage.inputSearch(searchCriteria);*/
     });
 
     When(/^I select Category "(.*?)" then Sub-category "(.*?)" in the menu$/, async(category:string, subCategory:string)=>{
         await homePage.chooseCategory(category, subCategory);
     });
 
-    // Then(/^I should see results showing only for "(.*?)$/, async(subCategory)=>{
-    //     await
-    // }
+    Then(/^I should see results showing only for "(.*?)$/, async(subCategory:string)=>{
+        await homePage.isSubCategoryPageTitleExist(subCategory);
+    });
+
+    When(/^I click sign in$/, async()=>{
+        await homePage.clickSignIn();
+    });
+
+    
+
 
     /*    Scenario 2
      @Given("^I am another green plan member$")
      public void scenario2_login() {
      Hpage.login("pguindon@teksystems.com", "oasiS1212");
-     }
-
-     @When("^I select \"([^\"]*)\" then \"([^\"]*)\" in the main menu$")
-     public void search(String category, String subCategory) {
-     Mpage.chooseCategory(driver, category, subCategory);
      }
 
      @Then("^I should see results showing only for \"([^\"]*)\"$")

@@ -24,7 +24,7 @@ export let config: Config = {
     baseUrl: 'https://www.amazon.ca/',
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
-    specs: ["features/*/01_Amazon_Offer_Add_to_Cart.feature"],
+    specs: ["features/*/*.feature"],
     // specs: ["features/*/*.feature"],
     exclude: [""],
     // noGlobals: true,
@@ -32,7 +32,8 @@ export let config: Config = {
         strict: true,
         format: ["pretty"],
         require: ["stepDefinitions/*.js",
-            'support/hooks.js']
+            'support/hooks.js'],
+        tags: '@smoke'
     },
 
     getMultiCapabilities: ()=> {

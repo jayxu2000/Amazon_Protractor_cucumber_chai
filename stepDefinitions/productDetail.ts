@@ -3,7 +3,7 @@ import {defineSupportCode} from 'cucumber';
 import {HomePage} from '../pages/homePage';
 import {async} from "q";
 
-defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
+defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
 
     let productDetailPage: ProductDetailPage = new ProductDetailPage();
 
