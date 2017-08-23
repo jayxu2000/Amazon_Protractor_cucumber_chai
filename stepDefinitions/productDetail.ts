@@ -1,6 +1,7 @@
 import {ProductDetailPage} from '../pages/productDetailPage';
 import {defineSupportCode} from 'cucumber';
 import {HomePage} from '../pages/homePage';
+import {async} from "q";
 
 defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
 
@@ -8,8 +9,11 @@ defineSupportCode(function ({When, Then, Given, setDefaultTimeout, After}) {
 
     setDefaultTimeout(60 * 1000);
 
-    When(/^I add selected item$/, function () {
-        productDetailPage.clickAddToCartButton();
+    When(/^I add selected item$/, async () => {
+        await productDetailPage.clickAddToCartButton();
+        if(await productDetailPage.isButtonPopOverClosePresent()){
+            await productDetailPage.clickButtonPopOverClose();
+        }
         /*    	expectedOfferTitle = Opage.getOfferTitle();
          Opage.clickButItNowButton();*/
     });

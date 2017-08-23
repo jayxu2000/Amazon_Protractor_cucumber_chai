@@ -22,7 +22,13 @@ export class HomePage extends BasePage {
     getCartCountText = async () => {
         console.log(`cart number is: ${await this.labelCartCount.getText()}`);
         return await this.labelCartCount.getText();
-    }
+    };
 
+    chooseCategory(category: string, subCategory: string) {
+        this.menuDepartment.click();
+        /*		String xpathCategory = "//span[@class = 'categories_tab--member' and contains(text(), '" + category + "')]";
+         driver.findElement(By.xpath(xpathCategory)).click();
+         driver.findElement(By.xpath(xpathCategory + "/following-sibling::ul/li/a[contains(text(),'" + subCategory + "')]")).click();*/
+    };
 
 }

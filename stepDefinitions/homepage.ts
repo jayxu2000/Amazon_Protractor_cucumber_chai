@@ -2,16 +2,18 @@ import {HomePage} from '../pages/homePage';
 import {defineSupportCode} from 'cucumber';//ES6 syntax which will use commonJS
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
+import {async} from "q";
 chai.use(chaiAsPromised);
 let expect = chai.expect;
 
-defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
+defineSupportCode(({When, Then, Given, setDefaultTimeout, Before}) => {
 
     let homePage: HomePage = new HomePage();
 
     setDefaultTimeout(60 * 1000);
 
-    Given(/^I open homepage$/, async() => {
+    ///^I open homepage$/,
+    Before( async() => {
         await homePage.to();
     });
 
@@ -26,7 +28,13 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
          DSpage.inputSearch(searchCriteria);*/
     });
 
-
+    // When(/^I select Category "(.*?)" then Sub-category "(.*?)" in the menu$/, async(category, subCategory)=>{
+    //     await
+    // }
+    //
+    // Then(/^I should see results showing only for "(.*?)$/, async(subCategory)=>{
+    //     await
+    // }
 
     /*    Scenario 2
      @Given("^I am another green plan member$")
