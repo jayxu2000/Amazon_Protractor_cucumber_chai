@@ -1,7 +1,5 @@
 import {SearchResultPage} from '../pages/searchResultPage';
 import {defineSupportCode} from 'cucumber';
-import {browser} from "protractor";
-
 
 defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
 

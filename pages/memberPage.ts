@@ -1,11 +1,12 @@
 import {BasePage} from "./basePage";
 import {browser, $, element, by} from "protractor";
 import {config} from '../protractor.cucumber.conf';
+import {async} from "q";
 
 export class MemberPage extends BasePage {
     url = '';
     pageLoaded = this.inDom($(''));
-
+    pageTitle = $('h1');
     account = $('#ap_email');
     accountPassword = $('#ap_password');
     btnSignIn = $('#signInSubmit');
@@ -15,4 +16,8 @@ export class MemberPage extends BasePage {
         this.accountPassword.sendKeys(password);
         this.btnSignIn.click();
     };
+
+    getPageTitle = async ()=>{
+        return await this.pageTitle.getText();
+    }
 }

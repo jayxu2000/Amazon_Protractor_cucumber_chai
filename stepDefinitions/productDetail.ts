@@ -1,7 +1,5 @@
 import {ProductDetailPage} from '../pages/productDetailPage';
 import {defineSupportCode} from 'cucumber';
-import {HomePage} from '../pages/homePage';
-import {async} from "q";
 
 defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
 

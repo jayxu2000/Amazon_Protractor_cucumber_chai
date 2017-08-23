@@ -7,8 +7,9 @@ export class HomePage extends BasePage {
     pageLoaded = this.inDom($('#seat_map_label'));
     labelCartCount = $('#nav-cart-count');
     menuSignInAccount = $('#nav-link-yourAccount');
-    accountListSection = $('#nav-link-accountList');
-    signIn = element(by.xpath("//div[@id='nav-al-signin']//span[text()='Sign in']"));
+    toolTipSignInAccount = $('#nav-signin-tooltip');
+    signInAccount = element(by.xpath("//div[@id='nav-al-signin']//span[text()='Sign in']"));
+    signInTooltip = element(by.xpath("//div[@id='nav-signin-tooltip']//span[text()='Sign in']"));
     userFirstName = $('#nav-link-yourAccount > span.nav-line-1');
     lnkSignOut = $('#nav-item-signout');
     menuDepartment = $('#nav-shop');
@@ -28,7 +29,6 @@ export class HomePage extends BasePage {
 
     chooseCategory = async (category: string, subCategory: string) => {
         await this.mouseOver(this.menuDepartment);
-
         let categoryElement = element(by.xpath(`//div[@id='nav-flyout-shopAll']//span[text()="${category}"]`));
         await this.mouseOver(categoryElement);
         subCategory = subCategory.replace(/'/g, "\'");
@@ -41,8 +41,13 @@ export class HomePage extends BasePage {
     }
 
     clickSignIn = async () => {
-        await this.mouseOver(this.accountListSection);
-        await this.signIn.click();
+        if(await this.toolTipSignInAccount.isPresent()){
+            await this.mouseOver(this.toolTipSignInAccount);
+            await this.signInTooltip.click();
+        }else {
+            await this.mouseOver(this.menuSignInAccount);
+            await this.signInAccount.click();
+        }
     }
 
 }

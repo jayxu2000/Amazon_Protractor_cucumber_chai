@@ -11,7 +11,7 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
 
     setDefaultTimeout(60 * 1000);
 
-    Given(/^I open homepage$/, async() => {
+    Given(/^I open homepage$/, async () => {
         await homePage.to();
     });
 
@@ -20,23 +20,21 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
         await expect(homePage.getCartCountText()).to.eventually.equal(count);
     });
 
-    When(/^I search for a product "(.*?)"$/, async (searchCriteria:string) => {
+    When(/^I search for a product "(.*?)"$/, async (searchCriteria: string) => {
         await homePage.inputSearch(searchCriteria);
     });
 
-    When(/^I select Category "(.*?)" then Sub-category "(.*?)" in the menu$/, async(category:string, subCategory:string)=>{
+    When(/^I select Category "(.*?)" then Sub-category "(.*?)" in the menu$/, async (category: string, subCategory: string) => {
         await homePage.chooseCategory(category, subCategory);
     });
 
-    Then(/^I should see results showing only for "(.*?)$/, async(subCategory:string)=>{
+    Then(/^I should see results showing only for "(.*?)$/, async (subCategory: string) => {
         await homePage.isSubCategoryPageTitleExist(subCategory);
     });
 
-    When(/^I click sign in$/, async()=>{
+    When(/^I click sign in$/, async () => {
         await homePage.clickSignIn();
     });
-
-    
 
 
     /*    Scenario 2
@@ -45,12 +43,6 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
      Hpage.login("pguindon@teksystems.com", "oasiS1212");
      }
 
-     @Then("^I should see results showing only for \"([^\"]*)\"$")
-     public void i_should_see_the_offer_added_to_my_cart(String subCategory) {
-     assertEquals(subCategory,Spage.getSubCategoryResultText());
-     Mpage.clickSignOut(driver);
-     }*/
-
     // @After
     // public void tearDown(Scenario scenario) {
     //     if (scenario.isFailed()) {
@@ -58,6 +50,6 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
     //         scenario.embed(screenshotBytes, "image/png");
     //     }
     // }
-
+     */
 
 });
