@@ -1,5 +1,6 @@
 import {browser, ExpectedConditions as EC} from "protractor";
 import {promise} from "selenium-webdriver";
+import {async} from "q";
 
 export abstract class BasePage {
 
@@ -92,4 +93,8 @@ export abstract class BasePage {
         });
         return present;
     };
+
+    mouseOver = async(locator)=>{
+        await browser.actions().mouseMove(locator).perform();
+    }
 }

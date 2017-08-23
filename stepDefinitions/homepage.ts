@@ -12,8 +12,7 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, Before}) => {
 
     setDefaultTimeout(60 * 1000);
 
-    ///^I open homepage$/,
-    Before( async() => {
+    Given(/^I open homepage$/, async() => {
         await homePage.to();
     });
 
@@ -28,10 +27,10 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, Before}) => {
          DSpage.inputSearch(searchCriteria);*/
     });
 
-    // When(/^I select Category "(.*?)" then Sub-category "(.*?)" in the menu$/, async(category, subCategory)=>{
-    //     await
-    // }
-    //
+    When(/^I select Category "(.*?)" then Sub-category "(.*?)" in the menu$/, async(category:string, subCategory:string)=>{
+        await homePage.chooseCategory(category, subCategory);
+    });
+
     // Then(/^I should see results showing only for "(.*?)$/, async(subCategory)=>{
     //     await
     // }

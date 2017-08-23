@@ -1,5 +1,5 @@
 import {BasePage} from "./basePage";
-import {$} from "protractor";
+import {browser, $, element, by} from "protractor";
 import {config} from '../protractor.cucumber.conf';
 import * as waitHelper from "../helpers/wait_helper";
 import * as Q from 'q';
@@ -12,6 +12,7 @@ export class HomePage extends BasePage {
     userFirstName = $('#nav-link-yourAccount > span.nav-line-1');
     lnkSignOut = $('#nav-item-signout');
     menuDepartment = $('#nav-shop');
+
     keywordSearch = $('#twotabsearchtextbox');
 
     inputSearch = async(searchValue: string) => {
@@ -24,11 +25,14 @@ export class HomePage extends BasePage {
         return await this.labelCartCount.getText();
     };
 
-    chooseCategory(category: string, subCategory: string) {
-        this.menuDepartment.click();
-        /*		String xpathCategory = "//span[@class = 'categories_tab--member' and contains(text(), '" + category + "')]";
-         driver.findElement(By.xpath(xpathCategory)).click();
-         driver.findElement(By.xpath(xpathCategory + "/following-sibling::ul/li/a[contains(text(),'" + subCategory + "')]")).click();*/
+    chooseCategory = async (category: string, subCategory: string) => {
+        await this.mouseOver(this.menuDepartment);
+
+        let categoryElement = element(by.xpath(`//div[@id='nav-flyout-shopAll']//span[text()="${category}"]`));
+        await this.mouseOver(categoryElement);
+        subCategory = subCategory.replace(/'/g, "\\'");
+        let subCategoryElement = element(by.xpath(`//div[@style='display: block;']//span[text()='${subCategory}']`));
+        await subCategoryElement.click();
     };
 
 }
