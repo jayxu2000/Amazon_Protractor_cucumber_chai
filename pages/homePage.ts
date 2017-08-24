@@ -16,6 +16,7 @@ export class HomePage extends BasePage {
     lnkSignOut = $('#nav-item-signout');
     menuDepartment = $('#nav-shop');
     subCatTitle = $('#merchandised-content> div > div > div > div > h1');
+    cartSection = $('#nav-cart');
 
     keywordSearch = $('#twotabsearchtextbox');
 
@@ -25,7 +26,7 @@ export class HomePage extends BasePage {
     };
 
     getCartCountText = async () => {
-        console.log(`cart number is: ${await this.labelCartCount.getText()}`);
+        console.log(`Current cart number is: ${await this.labelCartCount.getText()}`);
         return await this.labelCartCount.getText();
     };
 
@@ -64,5 +65,9 @@ export class HomePage extends BasePage {
         }
         await this.lnkSignOut.click();
     };
+
+    clickCartSection = async()=>{
+        await this.cartSection.click();
+    }
 
 }

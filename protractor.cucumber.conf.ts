@@ -24,7 +24,7 @@ export let config: Config = {
     baseUrl: 'https://www.amazon.ca/',
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
-    specs: ["features/*/TC01_amazon_user_login_and_out.feature"],
+    specs: ["features/*/TC02_Amazon_product_test.feature"],
     // specs: ["features/*/*.feature"],
     exclude: [""],
     // noGlobals: true,

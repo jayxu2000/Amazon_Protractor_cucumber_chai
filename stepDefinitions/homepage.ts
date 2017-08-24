@@ -1,4 +1,5 @@
 import {HomePage} from '../pages/homePage';
+import {ShoppingCartPage} from '../pages/shoppingCartPage'
 import {defineSupportCode} from 'cucumber';//ES6 syntax which will use commonJS
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
@@ -8,6 +9,7 @@ let expect = chai.expect;
 defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
     let homePage: HomePage = new HomePage();
+    let shoppingCartPage: ShoppingCartPage = new ShoppingCartPage();
 
     setDefaultTimeout(60 * 1000);
 
@@ -41,13 +43,13 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
     });
 
     After(async()=>{
-       let cartNumber = await homePage.getCartCountText();
-       console.log(`In After Step, the cart number is: ${parseInt(cartNumber)}`);
-        // for (let item of cartNumber) {
-        //
-        // }
+       console.log(`In After Step, before clean the cart number is: ${parseInt(await homePage.getCartCountText())}`);
+       if (parseInt(await homePage.getCartCountText())!= 0){
+           await homePage.clickCartSection();
+           await shoppingCartPage.clearCart();
+       }
+        console.log(`In After Step, after clean, the cart number is: ${parseInt(await homePage.getCartCountText())}`);
     })
-
 
     /*    Scenario 2
      @Given("^I am another green plan member$")
