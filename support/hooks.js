@@ -28,7 +28,7 @@ defineSupportCode(function ({After, registerListener, Before}) {
         theme: "bootstrap",
         // jsonFile: targetJson,
         // output: htmlReports + "/cucumber_reporter.html",
-        output: "reports/html/seatplan_report.html",
+        output: "reports/html/amazon_report.html",
         jsonDir: jsonReports,
         reportSuiteAsScenarios: true,
         storeScreenShots: true

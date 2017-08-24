@@ -16,7 +16,7 @@ defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
     });
 
     Then(/^the "(.*?)" page displays$/, async (pageTitle)=> {
-        await expect(memberPage.getPageTitle()).to.eventually.contain(pageTitle);
+        await expect(memberPage.getPageTitle()).to.eventually.include(pageTitle);
     });
 
 

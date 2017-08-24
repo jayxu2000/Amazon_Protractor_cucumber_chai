@@ -1,7 +1,7 @@
 import {SearchResultPage} from '../pages/searchResultPage';
 import {defineSupportCode} from 'cucumber';
 
-defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
+defineSupportCode( ({When, Then, Given, setDefaultTimeout}) =>{
 
     let searchResultPage: SearchResultPage = new SearchResultPage();
 

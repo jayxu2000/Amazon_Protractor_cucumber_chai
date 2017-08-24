@@ -6,7 +6,7 @@ Feature: TC02_Amazon: product demo test case
   @smoke
   Scenario: 01_add product to shopping cart
     Given The shopping cart has the count number "0"
-    When I search for a product "Cleaner"
+    When I search for a product "usb-c"
     And I select the first item in list
     And I add selected item
     Then The shopping cart has the count number "1"

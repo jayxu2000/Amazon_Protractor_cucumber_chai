@@ -1,6 +1,7 @@
 import {BasePage} from "./basePage";
 import {browser, $, element, by, $$} from "protractor";
 import {config} from '../protractor.cucumber.conf';
+import {async} from "q";
 
 export class HomePage extends BasePage {
     url = config.baseUrl;
@@ -10,8 +11,8 @@ export class HomePage extends BasePage {
     toolTipSignInAccount = $('#nav-signin-tooltip');
     signInAccount = element(by.xpath("//div[@id='nav-al-signin']//span[text()='Sign in']"));
     signInTooltip = element(by.xpath("//div[@id='nav-signin-tooltip']//span[text()='Sign in']"));
-    userFirstNameAccount = $$('#nav-link-yourAccount > span.nav-line-1');
-    userFirstNameTooltip = $$('#nav-link-accountList > span.nav-line-1');
+    userFirstNameAccount = $('#nav-link-yourAccount > span.nav-line-1');
+    userFirstNameTooltip = $('#nav-link-accountList > span.nav-line-1');
     lnkSignOut = $('#nav-item-signout');
     menuDepartment = $('#nav-shop');
     subCatTitle = $('#merchandised-content> div > div > div > div > h1');
@@ -48,11 +49,20 @@ export class HomePage extends BasePage {
             await this.mouseOver(this.menuSignInAccount);
             await this.signInAccount.click();
         }
-    }
+    };
 
     getMemberFirstName = async()=>{
-        (await this.userFirstNameAccount.isPresent())? (await this.userFirstNameAccount.getText()):
+        return (await this.userFirstNameAccount.isPresent())? (await this.userFirstNameAccount.getText()):
             (await this.userFirstNameTooltip.getText());
-    }
+    };
+
+    clickSignOut = async () => {
+        if(await this.toolTipSignInAccount.isPresent()){
+            await this.mouseOver(this.toolTipSignInAccount);
+        }else {
+            await this.mouseOver(this.menuSignInAccount);
+        }
+        await this.lnkSignOut.click();
+    };
 
 }

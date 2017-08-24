@@ -11,9 +11,9 @@ export class MemberPage extends BasePage {
     btnSignIn = $('#signInSubmit');
 
     signIn = async (email:string, password:string) => {
-        this.account.sendKeys(email);
-        this.accountPassword.sendKeys(password);
-        this.btnSignIn.click();
+        await this.account.sendKeys(email);
+        await this.accountPassword.sendKeys(password);
+        await this.btnSignIn.click();
     };
 
     getPageTitle = async ()=>{

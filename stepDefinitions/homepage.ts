@@ -5,7 +5,7 @@ import * as chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 let expect = chai.expect;
 
-defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
+defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
     let homePage: HomePage = new HomePage();
 
@@ -37,22 +37,23 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
     });
 
     Then(/^I successfully login and be able to see my first name "(.*?)"$/, async (firstName:string)=> {
-        await expect(homePage.getMemberFirstName()).to.eventually.contain(firstName);
+        await expect( await homePage.getMemberFirstName()).include(firstName);
     });
+
+    After(async()=>{
+       let cartNumber = await homePage.getCartCountText();
+       console.log(`In After Step, the cart number is: ${parseInt(cartNumber)}`);
+        // for (let item of cartNumber) {
+        //
+        // }
+    })
+
 
     /*    Scenario 2
      @Given("^I am another green plan member$")
      public void scenario2_login() {
      Hpage.login("pguindon@teksystems.com", "oasiS1212");
      }
-
-    // @After
-    // public void tearDown(Scenario scenario) {
-    //     if (scenario.isFailed()) {
-    //         byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    //         scenario.embed(screenshotBytes, "image/png");
-    //     }
-    // }
      */
 
 });
