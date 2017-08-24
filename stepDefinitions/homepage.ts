@@ -36,6 +36,9 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout}) => {
         await homePage.clickSignIn();
     });
 
+    Then(/^I successfully login and be able to see my first name "(.*?)"$/, async (firstName:string)=> {
+        await expect(homePage.getMemberFirstName()).to.eventually.contain(firstName);
+    });
 
     /*    Scenario 2
      @Given("^I am another green plan member$")

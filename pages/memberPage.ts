@@ -1,6 +1,5 @@
 import {BasePage} from "./basePage";
 import {browser, $, element, by} from "protractor";
-import {config} from '../protractor.cucumber.conf';
 import {async} from "q";
 
 export class MemberPage extends BasePage {
@@ -20,4 +19,6 @@ export class MemberPage extends BasePage {
     getPageTitle = async ()=>{
         return await this.pageTitle.getText();
     }
+
+
 }

@@ -11,13 +11,17 @@ defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
 
     setDefaultTimeout(60 * 1000);
 
-    When(/^$/, async (account:string, password:string)=> {
+    When(/^I sign in as account "(.*?)" with password "(.*?)"$/, async (account:string, password:string)=> {
         await memberPage.signIn(account, password);
     });
 
     Then(/^the "(.*?)" page displays$/, async (pageTitle)=> {
         await expect(memberPage.getPageTitle()).to.eventually.contain(pageTitle);
     });
+
+
+
+
 
 
 });
