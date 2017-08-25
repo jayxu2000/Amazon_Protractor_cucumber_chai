@@ -1,5 +1,5 @@
 import {BasePage} from "./basePage";
-import {$, element, by, $$} from "protractor";
+import {$, element, by, $$, browser} from "protractor";
 
 export class ShoppingCartPage extends BasePage {
     url = '';
@@ -12,6 +12,7 @@ export class ShoppingCartPage extends BasePage {
         for (let i=totalDeleteCheckboxes; i>0; i--){
             let deleteElement = element(by.xpath("(//input[@value='Delete'])["+i+"]"));
             await deleteElement.click();
+            await browser.sleep(500);
         }
     }
 }

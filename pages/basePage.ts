@@ -34,7 +34,7 @@ export abstract class BasePage {
      *
      * @requires page have both `url` and `pageLoaded` properties
      */
-    to = () =>{
+    to = () => {
         browser.get(this.url, this.timeout.xl);
         // return this.at();
     };
@@ -75,7 +75,7 @@ export abstract class BasePage {
         return EC.titleIs(title);
     };
 
-    waitForJs = ()=> {
+    waitForJs = () => {
         return browser.wait(function () {
             return browser.executeScript('return document.readyState==="complete"');
         }, this.timeout.xl);
@@ -88,13 +88,15 @@ export abstract class BasePage {
     isElementPresent = element => {
         let present = browser.wait(EC.visibilityOf(element), 5 * 1000, 'Element is not present').then(() => {
             return true;
-        }).catch( err => {
+        }).catch(err => {
             return false;
         });
         return present;
     };
 
-    mouseOver = async(locator)=>{
+    mouseOver = async (locator) => {
+        await browser.sleep(500);
         await browser.actions().mouseMove(locator).perform();
+        await browser.sleep(500);
     }
 }

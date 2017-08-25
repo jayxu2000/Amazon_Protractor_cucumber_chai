@@ -12,7 +12,5 @@ defineSupportCode( ({When, Then, Given, setDefaultTimeout, After}) =>{
         if(await productDetailPage.isButtonPopOverClosePresent()){
             await productDetailPage.clickButtonPopOverClose();
         }
-        /*    	expectedOfferTitle = Opage.getOfferTitle();
-         Opage.clickButItNowButton();*/
     });
 });

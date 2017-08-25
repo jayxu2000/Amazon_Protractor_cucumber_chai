@@ -18,7 +18,7 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
     });
 
     //set "target": "ES2016" in tsconfig.json so that we can use async/await
-    Given(/^The shopping cart has the count number "(.*?)"$/, async (count) => {
+    Given(/^The shopping cart has the counted number "(.*?)"$/, async (count) => {
         await expect(homePage.getCartCountText()).to.eventually.equal(count);
     });
 
@@ -30,32 +30,28 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
         await homePage.chooseCategory(category, subCategory);
     });
 
-    Then(/^I should see results showing only for "(.*?)$/, async (subCategory: string) => {
-        await homePage.isSubCategoryPageTitleExist(subCategory);
+    Then(/^I should see results showing only for "(.*?)"$/, async (subCategory: string) => {
+        expect(await homePage.getSubCategoryPageTitle()).include(subCategory);
     });
 
     When(/^I click sign in$/, async () => {
         await homePage.clickSignIn();
     });
 
-    Then(/^I successfully login and be able to see my first name "(.*?)"$/, async (firstName:string)=> {
-        await expect( await homePage.getMemberFirstName()).include(firstName);
+    Then(/^I successfully login and be able to see my first name "(.*?)"$/, async (firstName: string) => {
+        await expect(await homePage.getMemberFirstName()).include(firstName);
     });
 
-    After(async()=>{
-       console.log(`In After Step, before clean the cart number is: ${parseInt(await homePage.getCartCountText())}`);
-       if (parseInt(await homePage.getCartCountText())!= 0){
-           await homePage.clickCartSection();
-           await shoppingCartPage.clearCart();
-       }
-        console.log(`In After Step, after clean, the cart number is: ${parseInt(await homePage.getCartCountText())}`);
+    After(async () => {
+        let currentCartCount = await parseInt(await homePage.getCartCountText());
+        console.log(`After test, before cleanup, the cart number is: ${currentCartCount}`);
+        if (currentCartCount != 0) {
+            await homePage.clickCartSection();
+            await shoppingCartPage.clearCart();
+        }
+        console.log(`After test, after cleanup, the cart number is: ${await parseInt(await homePage.getCartCountText())}`);
+        if (await homePage.isSignedIn()) {
+            await homePage.clickSignOut();
+        }
     })
-
-    /*    Scenario 2
-     @Given("^I am another green plan member$")
-     public void scenario2_login() {
-     Hpage.login("pguindon@teksystems.com", "oasiS1212");
-     }
-     */
-
 });

@@ -24,8 +24,9 @@ export let config: Config = {
     baseUrl: 'https://www.amazon.ca/',
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
-    specs: ["features/*/TC02_Amazon_product_test.feature"],
-    // specs: ["features/*/*.feature"],
+    // specs: ["features/*/TC01_amazon_user_login_and_out.feature"],
+    // specs: ["features/*/TC02_Amazon_product_test.feature"],
+    specs: ["features/*/*.feature"],
     exclude: [""],
     // noGlobals: true,
     cucumberOpts: {
@@ -33,7 +34,9 @@ export let config: Config = {
         format: ["pretty"],
         require: ["stepDefinitions/*.js",
             'support/hooks.js'],
-        tags: '@smoke'
+        // tags: '@smoke'
+        // tags: '@Regression'
+        tags: '@smoke or @Regression'
     },
 
     getMultiCapabilities: ()=> {
