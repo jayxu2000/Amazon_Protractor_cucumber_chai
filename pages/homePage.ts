@@ -1,5 +1,5 @@
 import {BasePage} from "./basePage";
-import {browser, $, element, by, $$} from "protractor";
+import {browser, $, element, by} from "protractor";
 import {config} from '../protractor.cucumber.conf';
 import {async} from "q";
 
@@ -39,7 +39,7 @@ export class HomePage extends BasePage {
         await subCategoryElement.click();
     };
 
-    isSubCategoryPageTitleExist = async (title: string) => {
+    isSubCategoryPageTitleExist = async () => {
         await this.subCatTitle.isPresent();
     }
 
@@ -68,6 +68,6 @@ export class HomePage extends BasePage {
 
     clickCartSection = async()=>{
         await this.cartSection.click();
-    }
+    };
 
 }

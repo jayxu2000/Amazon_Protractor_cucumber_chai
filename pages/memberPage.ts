@@ -1,6 +1,5 @@
 import {BasePage} from "./basePage";
-import {browser, $, element, by} from "protractor";
-import {async} from "q";
+import {$} from "protractor";
 
 export class MemberPage extends BasePage {
     url = '';
@@ -19,6 +18,5 @@ export class MemberPage extends BasePage {
     getPageTitle = async ()=>{
         return await this.pageTitle.getText();
     }
-
 
 }
