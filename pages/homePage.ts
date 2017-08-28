@@ -43,7 +43,12 @@ export class HomePage extends BasePage {
     clickSignIn = async () => {
         if (await this.toolTipSignInAccount.isPresent()) {
             await this.signInTooltip.click();
-        } else {
+        }
+        else if(this.menuSignOut.isPresent()){
+            await this.mouseOver(this.menuSignOut);
+            await this.signInAccount.click();
+        }
+        else {
             await this.mouseOver(this.menuSignInAccount);
             await this.signInAccount.click();
         }
