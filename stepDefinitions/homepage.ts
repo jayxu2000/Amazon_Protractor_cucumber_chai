@@ -19,7 +19,7 @@ defineSupportCode(({When, Then, Given, setDefaultTimeout, After}) => {
 
     //set "target": "ES2016" in tsconfig.json so that we can use async/await
     Given(/^The shopping cart has the counted number "(.*?)"$/, async (count) => {
-        await expect(homePage.getCartCountText()).to.eventually.equal(count);
+        await expect(await homePage.getCartCountText()).equal(count);
     });
 
     When(/^I search for a product "(.*?)"$/, async (searchCriteria: string) => {
