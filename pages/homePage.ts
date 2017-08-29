@@ -25,7 +25,7 @@ export class HomePage extends BasePage {
     };
 
     getCartCountText = async () => {
-        await browser.sleep(500);
+        // await browser.sleep(500);
         return await this.labelCartCount.getText();
     };
 

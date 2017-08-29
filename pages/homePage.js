@@ -33,7 +33,7 @@ class HomePage extends basePage_1.BasePage {
             yield this.keywordSearch.sendKeys("\n");
         });
         this.getCartCountText = () => __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.browser.sleep(500);
+            // await browser.sleep(500);
             return yield this.labelCartCount.getText();
         });
         this.chooseCategory = (category, subCategory) => __awaiter(this, void 0, void 0, function* () {
