@@ -10,6 +10,7 @@
   },
   "private": true,
   "devDependencies": {
+    "@types/protractor": "^4.0.0",
     "chai": "^4.0.2",
     "chai-as-promised": "^7.0.0",
     "cucumber": "^2.3.1",

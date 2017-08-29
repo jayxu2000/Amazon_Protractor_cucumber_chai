@@ -34,9 +34,9 @@ export let config: Config = {
         format: ["pretty"],
         require: ["stepDefinitions/*.js",
             'support/hooks.js'],
-        tags: '@smoke'
+        // tags: '@smoke'
         // tags: '@Regression'
-        // tags: '@smoke or @Regression'
+        tags: '@smoke or @Regression'
     },
 
     getMultiCapabilities: ()=> {
@@ -53,6 +53,9 @@ export let config: Config = {
     // seleniumAddress: 'http://localhost:4444/wd/hub', // uncomment this line to run protractor tests on standalone selenium server
     directConnect: true, // uncomment this line to run protractor directly in browser and not on selenium server
     onPrepare: ()=> {
+
+        // let globals = require('protractor/globals');
+
         // browser.driver.manage().window().maximize();
         // this command doesn't work, using the following function to maximize browser window.
         setTimeout(()=> {
