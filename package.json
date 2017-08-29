@@ -37,6 +37,8 @@
   "dependencies": {
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "0.0.31",
-    "@types/cucumber": "^2.0.3"
+    "@types/cucumber": "^2.0.3",
+    "@types/protractor": "^4.0.0",
+    "@types/q": "^1.0.5"
   }
 }
