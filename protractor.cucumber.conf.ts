@@ -35,8 +35,8 @@ export let config: Config = {
         require: ["stepDefinitions/*.js",
             'support/hooks.js'],
         // tags: '@smoke'
-        // tags: '@Regression'
-        tags: '@smoke or @Regression'
+        tags: '@Regression'
+        // tags: '@smoke or @Regression'
     },
 
     getMultiCapabilities: ()=> {
