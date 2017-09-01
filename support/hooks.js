@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
-const Cucumber = require("cucumber");
-const { defineSupportCode } = require("cucumber");
+// const Cucumber = require("cucumber");
+const cucumber_1 = require("cucumber");
+// const {defineSupportCode} = require("cucumber");
 const fs = require("fs");
 const mkdirp = require("mkdirp");
 const reporter = require("cucumber-html-reporter");
 const jsonReports = process.cwd() + "/reports/json";
 const htmlReports = process.cwd() + "/reports/html";
-defineSupportCode(function ({ After, registerListener, Before }) {
+cucumber_1.defineSupportCode(function ({ After, registerListener, Before }) {
     After(function (scenarioResult) {
         const world = this;
         if (scenarioResult.isFailed()) {
@@ -53,9 +54,12 @@ defineSupportCode(function ({ After, registerListener, Before }) {
             }
         }
     };
-    let jsonformatter = new Cucumber.JsonFormatter({
+    let jsonformatter = new cucumber_1.JsonFormatter({
         log: logFn
     });
+    // let jsonformatter = new Cucumber.JsonFormatter({
+    //     log: logFn
+    // });
     registerListener(jsonformatter);
 });
 //# sourceMappingURL=hooks.js.map

@@ -1,6 +1,7 @@
 import {browser} from "protractor";
-const Cucumber = require("cucumber");
-const {defineSupportCode} = require("cucumber");
+// const Cucumber = require("cucumber");
+import {defineSupportCode, JsonFormatter} from 'cucumber';
+// const {defineSupportCode} = require("cucumber");
 const fs = require("fs");
 const mkdirp = require("mkdirp");
 const reporter = require("cucumber-html-reporter");
@@ -58,9 +59,13 @@ defineSupportCode(function ({After, registerListener, Before}) {
         }
     };
 
-    let jsonformatter = new Cucumber.JsonFormatter({
+    let jsonformatter: JsonFormatter = new JsonFormatter({
         log: logFn
     });
+
+    // let jsonformatter = new Cucumber.JsonFormatter({
+    //     log: logFn
+    // });
 
     registerListener(jsonformatter);
 });
