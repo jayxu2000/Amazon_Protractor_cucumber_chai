@@ -6,15 +6,30 @@ const protractor_1 = require("protractor");
 let _ = require('lodash');
 let capabilities = {
     directConnect: false,
+    //chrome, firefox, android... are the names of the capability instances
     chrome: {
+        name: 'chrome',
         browserName: 'chrome',
         shardTestFiles: true,
-        maxInstances: 1
+        maxInstances: 1,
+        seleniumAddress: 'http://localhost:4444/wd/hub'
     },
     firefox: {
+        name: 'firefox',
         browserName: 'firefox',
         shardTestFiles: true,
-        maxInstances: 2
+        maxInstances: 2,
+        seleniumAddress: 'http://localhost:4444/wd/hub'
+    },
+    android: {
+        name: 'android',
+        browserName: 'chrome',
+        shardTestFiles: true,
+        maxInstances: 1,
+        'appium-version': '1.7.0',
+        platformName: "Android",
+        deviceName: 'Android Emulator',
+        seleniumAddress: 'http://localhost:4723/wd/hub'
     }
 };
 exports.config = {
@@ -37,17 +52,33 @@ exports.config = {
         // tags: '@smoke or @Regression'
     },
     getMultiCapabilities: () => {
-        let browsers_param = capabilities.chrome.browserName;
-        let browsers = browsers_param.split(',');
+        /***
+         * it need to offer the info of test capability instance
+         * here user can pick the capability option from object 'capabilities' above
+         * or use information called from CLI, like: protractor ... --params.browser="chrome,firefox,android"*
+         */
+        // let name_param = this.params.name || capabilities.chrome.name;
+        let name_param = capabilities.chrome.name;
+        let instanceName = name_param.split(',');
         // Using lodash open select the keys in `capabilities` corresponding
-        // open the browsers param.
+        // to the browsers param.
         return _(capabilities)
-            .pick(browsers)
+            .pick(instanceName)
             .values()
             .value();
     },
-    // seleniumAddress: 'http://localhost:4444/wd/hub', // uncomment this line to run protractor tests on standalone selenium server
-    directConnect: true,
+    /***
+     * directConnect:
+     * this line to run protractor directly in browser and not on selenium server - chrome by default
+     * seleniumAddress:
+     * this line to run protractor tests on standalone selenium server
+     *  when you need to run other broswers like, ff, safari, you need use only seleniumAddress only.
+     *  Note: if users want to run in specific cases, for instance, appium/mobile test need port number: 4723, we will
+     *  define the seleniumAddress: separately in capability instances, instead of applying this property here as common
+     *  place
+     */
+    // seleniumAddress: 'http://localhost:4723/wd/hub',
+    // directConnect: true,
     onPrepare: () => {
         // let globals = require('protractor/globals');
         // browser.driver.manage().window().maximize();
